@@ -1,0 +1,6 @@
+[submodule "OsiriX-API"]
+	path = OsiriX-API
+	url = git@github.com:aglv/OsiriX-API.git
+[submodule "DCMTK"]
+	path = DCMTK
+	url = git@github.com:aglv/DCMTK.git
