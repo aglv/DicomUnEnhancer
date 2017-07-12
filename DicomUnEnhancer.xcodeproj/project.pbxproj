@@ -21,6 +21,8 @@
 		599BEEFE1429C49400B45236 /* dcm2nii.info.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 599BEEFD1429C49400B45236 /* dcm2nii.info.txt */; };
 		59A48A9314471CFA00B934DD /* DicomUnEnhancer.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A48A9214471CFA00B934DD /* DicomUnEnhancer.png */; };
 		59F3430F14448535004904DE /* OsiriX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F3430E14448535004904DE /* OsiriX.framework */; };
+		7158D2291F16171600AEBAB5 /* DicomUnEnhancer+Versions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7158D2271F16171600AEBAB5 /* DicomUnEnhancer+Versions.h */; };
+		7158D22A1F16171600AEBAB5 /* DicomUnEnhancer+Versions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7158D2281F16171600AEBAB5 /* DicomUnEnhancer+Versions.m */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,8 @@
 		59F3430E14448535004904DE /* OsiriX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OsiriX.framework; path = "OsiriX-API/OsiriX.framework"; sourceTree = "<group>"; };
 		7123686C1F1542FB00AA108F /* DCMTK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DCMTK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		712368761F1543C700AA108F /* DCMTK.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = DCMTK.sh; path = DicomUnEnhancer/DCMTK.sh; sourceTree = "<group>"; };
+		7158D2271F16171600AEBAB5 /* DicomUnEnhancer+Versions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DicomUnEnhancer+Versions.h"; sourceTree = "<group>"; };
+		7158D2281F16171600AEBAB5 /* DicomUnEnhancer+Versions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DicomUnEnhancer+Versions.m"; sourceTree = "<group>"; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DicomUnEnhancer/Info.plist; sourceTree = "<group>"; };
 		AB5D36050680E57E00F4007A /* DicomUnEnhancer.osirixplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DicomUnEnhancer.osirixplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -126,6 +130,8 @@
 			children = (
 				5939C3A8144713E300A6D158 /* DicomUnEnhancer.h */,
 				5939C3A9144713E300A6D158 /* DicomUnEnhancer.mm */,
+				7158D2271F16171600AEBAB5 /* DicomUnEnhancer+Versions.h */,
+				7158D2281F16171600AEBAB5 /* DicomUnEnhancer+Versions.m */,
 				59391B2A144C2C7A007B330D /* DicomUnEnhancer+Defaults.h */,
 				59391B2B144C2C7A007B330D /* DicomUnEnhancer+Defaults.mm */,
 				5939C3AA144713E300A6D158 /* DicomUnEnhancerDCMTK.h */,
@@ -172,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5939C3AC144713E300A6D158 /* DicomUnEnhancer.h in Headers */,
+				7158D2291F16171600AEBAB5 /* DicomUnEnhancer+Versions.h in Headers */,
 				5939C3AE144713E300A6D158 /* DicomUnEnhancerDCMTK.h in Headers */,
 				59391B27144C2454007B330D /* DicomUnEnhancerNIfTIAccessoryViewController.h in Headers */,
 				59391B2C144C2C7A007B330D /* DicomUnEnhancer+Defaults.h in Headers */,
@@ -298,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5939C3AD144713E300A6D158 /* DicomUnEnhancer.mm in Sources */,
+				7158D22A1F16171600AEBAB5 /* DicomUnEnhancer+Versions.m in Sources */,
 				5939C3AF144713E300A6D158 /* DicomUnEnhancerDCMTK.mm in Sources */,
 				59391B28144C2454007B330D /* DicomUnEnhancerNIfTIAccessoryViewController.mm in Sources */,
 				59391B2D144C2C7A007B330D /* DicomUnEnhancer+Defaults.mm in Sources */,
