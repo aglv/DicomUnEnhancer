@@ -388,22 +388,18 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
                     
                     NSLog(@"Processing %@", tmpDicomDir);
                     
-                    NSMutableArray* args = [NSMutableArray array];
-                    [args addObjectsFromArray:[NSArray arrayWithObjects: @"-r", ([NSUserDefaults.standardUserDefaults boolForKey:DicomUnEnhancerNIfTIReorientToNearestOrthogonalDefaultsKey]? @"Y" : @"N"), nil]];
-                    [args addObjectsFromArray:[NSArray arrayWithObjects: @"-a", ([NSUserDefaults.standardUserDefaults boolForKey:DicomUnEnhancerNIfTIAnonymizeDefaultsKey]? @"Y" : @"N"), nil]];
-                    [args addObjectsFromArray:[NSArray arrayWithObjects: @"-g", ([NSUserDefaults.standardUserDefaults boolForKey:DicomUnEnhancerNIfTIGzipOutputDefaultsKey]? @"Y" : @"N"), nil]];
-                    [args addObjectsFromArray:[NSArray arrayWithObjects: @"-d", ([NSUserDefaults.standardUserDefaults boolForKey:DicomUnEnhancerNIfTIOutputNamingDateDefaultsKey]? @"Y" : @"N"), nil]];
-                    [args addObjectsFromArray:[NSArray arrayWithObjects: @"-e", ([NSUserDefaults.standardUserDefaults boolForKey:DicomUnEnhancerNIfTIOutputNamingEventsDefaultsKey]? @"Y" : @"N"), nil]];
-                    [args addObjectsFromArray:[NSArray arrayWithObjects: @"-i", ([NSUserDefaults.standardUserDefaults boolForKey:DicomUnEnhancerNIfTIOutputNamingIDDefaultsKey]? @"Y" : @"N"), nil]];
-                    [args addObjectsFromArray:[NSArray arrayWithObjects: @"-p", ([NSUserDefaults.standardUserDefaults boolForKey:DicomUnEnhancerNIfTIOutputNamingProtocolDefaultsKey]? @"Y" : @"N"), nil]];
-                    [args addObjectsFromArray:[NSArray arrayWithObjects: @"-o", destDirPath, tmpDicomDir, nil]];
+                    NSArray* args = @[ @"-f", [NSUserDefaults.standardUserDefaults stringForKey:DicomUnEnhancerNIfTIOutputNamingDefaultsKey],
+                                       @"-o", destDirPath,
+                                       @"-t", ([NSUserDefaults.standardUserDefaults boolForKey:DicomUnEnhancerNIfTIAnonymizeDefaultsKey]? @"n" : @"y"),
+                                       @"-z", ([NSUserDefaults.standardUserDefaults boolForKey:DicomUnEnhancerNIfTIGzipOutputDefaultsKey]? @"y" : @"n"),
+                                       tmpDicomDir ];
                     
-                    NSTask* task = [[NSTask alloc] init];
-                    task.launchPath = [[NSBundle bundleForClass:[self class]] pathForAuxiliaryExecutable:@"dcm2nii"];
+                    NSTask* task = [[[NSTask alloc] init] autorelease];
+                    task.launchPath = [[NSBundle bundleForClass:[self class]] pathForAuxiliaryExecutable:@"dcm2niix"];
                     task.arguments = args;
                     [task launch];
                     while( [task isRunning]) [NSThread sleepForTimeInterval: 0.01];
-                    [task interrupt];
+                        [task interrupt];
                     
                     [NSFileManager.defaultManager removeItemAtPath:tmpDicomDir error:NULL];
                 }

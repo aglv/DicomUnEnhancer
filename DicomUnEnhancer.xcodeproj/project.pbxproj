@@ -17,8 +17,8 @@
 		5939C3AD144713E300A6D158 /* DicomUnEnhancer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5939C3A9144713E300A6D158 /* DicomUnEnhancer.mm */; };
 		5939C3AE144713E300A6D158 /* DicomUnEnhancerDCMTK.h in Headers */ = {isa = PBXBuildFile; fileRef = 5939C3AA144713E300A6D158 /* DicomUnEnhancerDCMTK.h */; };
 		5939C3AF144713E300A6D158 /* DicomUnEnhancerDCMTK.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5939C3AB144713E300A6D158 /* DicomUnEnhancerDCMTK.mm */; };
-		599BEEFC1429C48100B45236 /* dcm2nii in CopyFiles */ = {isa = PBXBuildFile; fileRef = 599BEEF91429C45D00B45236 /* dcm2nii */; };
-		599BEEFE1429C49400B45236 /* dcm2nii.info.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 599BEEFD1429C49400B45236 /* dcm2nii.info.txt */; };
+		599BEEFC1429C48100B45236 /* dcm2niix in Copy Executables */ = {isa = PBXBuildFile; fileRef = 599BEEF91429C45D00B45236 /* dcm2niix */; };
+		599BEEFE1429C49400B45236 /* dcm2niix.info.txt in Copy Executables */ = {isa = PBXBuildFile; fileRef = 599BEEFD1429C49400B45236 /* dcm2niix.info.txt */; };
 		59A48A9314471CFA00B934DD /* DicomUnEnhancer.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A48A9214471CFA00B934DD /* DicomUnEnhancer.png */; };
 		59F3430F14448535004904DE /* OsiriX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F3430E14448535004904DE /* OsiriX.framework */; };
 		7158D2291F16171600AEBAB5 /* DicomUnEnhancer+Versions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7158D2271F16171600AEBAB5 /* DicomUnEnhancer+Versions.h */; };
@@ -37,15 +37,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		599BEEFB1429C47600B45236 /* CopyFiles */ = {
+		599BEEFB1429C47600B45236 /* Copy Executables */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				599BEEFC1429C48100B45236 /* dcm2nii in CopyFiles */,
-				599BEEFE1429C49400B45236 /* dcm2nii.info.txt in CopyFiles */,
+				599BEEFC1429C48100B45236 /* dcm2niix in Copy Executables */,
+				599BEEFE1429C49400B45236 /* dcm2niix.info.txt in Copy Executables */,
 			);
+			name = "Copy Executables";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -64,8 +65,8 @@
 		5939C3A9144713E300A6D158 /* DicomUnEnhancer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DicomUnEnhancer.mm; sourceTree = "<group>"; };
 		5939C3AA144713E300A6D158 /* DicomUnEnhancerDCMTK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DicomUnEnhancerDCMTK.h; sourceTree = "<group>"; };
 		5939C3AB144713E300A6D158 /* DicomUnEnhancerDCMTK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DicomUnEnhancerDCMTK.mm; sourceTree = "<group>"; };
-		599BEEF91429C45D00B45236 /* dcm2nii */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = dcm2nii; sourceTree = "<group>"; };
-		599BEEFD1429C49400B45236 /* dcm2nii.info.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dcm2nii.info.txt; sourceTree = "<group>"; };
+		599BEEF91429C45D00B45236 /* dcm2niix */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = dcm2niix; sourceTree = "<group>"; };
+		599BEEFD1429C49400B45236 /* dcm2niix.info.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dcm2niix.info.txt; sourceTree = "<group>"; };
 		59A48A9214471CFA00B934DD /* DicomUnEnhancer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DicomUnEnhancer.png; sourceTree = "<group>"; };
 		59F3430E14448535004904DE /* OsiriX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OsiriX.framework; path = "OsiriX-API/OsiriX.framework"; sourceTree = "<group>"; };
 		7123686C1F1542FB00AA108F /* DCMTK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DCMTK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,8 +156,8 @@
 		599BEEF81429C44B00B45236 /* Binaries */ = {
 			isa = PBXGroup;
 			children = (
-				599BEEF91429C45D00B45236 /* dcm2nii */,
-				599BEEFD1429C49400B45236 /* dcm2nii.info.txt */,
+				599BEEF91429C45D00B45236 /* dcm2niix */,
+				599BEEFD1429C49400B45236 /* dcm2niix.info.txt */,
 			);
 			name = Binaries;
 			path = DicomUnEnhancer/Binaries;
@@ -209,10 +210,11 @@
 			buildPhases = (
 				8D5B49AD048680CD000E48DA /* Headers */,
 				8D5B49AF048680CD000E48DA /* Resources */,
-				599BEEFB1429C47600B45236 /* CopyFiles */,
+				599BEEFB1429C47600B45236 /* Copy Executables */,
 				8D5B49B1048680CD000E48DA /* Sources */,
 				8D5B49B3048680CD000E48DA /* Frameworks */,
 				8D5B49B5048680CD000E48DA /* Rez */,
+				71C9993B1F177D520030EF82 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -297,6 +299,19 @@
 			shellPath = /bin/sh;
 			shellScript = "sh \"$PROJECT_DIR/DicomUnEnhancer/DCMTK.sh\"";
 		};
+		71C9993B1F177D520030EF82 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -327,6 +342,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -334,6 +350,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -356,7 +373,7 @@
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				INFOPLIST_FILE = DicomUnEnhancer/Info.plist;
-				INSTALL_PATH = "@executable_path/../Plug-ins";
+				INSTALL_PATH = /Plugins;
 				LIBRARY_SEARCH_PATHS = "";
 				LIBRARY_STYLE = Bundle;
 				OTHER_CFLAGS = "-D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES=0";
@@ -393,7 +410,7 @@
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				INFOPLIST_FILE = DicomUnEnhancer/Info.plist;
-				INSTALL_PATH = "@executable_path/../Plug-ins";
+				INSTALL_PATH = /Plugins;
 				LIBRARY_SEARCH_PATHS = "";
 				LIBRARY_STYLE = Bundle;
 				OTHER_CFLAGS = "-D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES=0";

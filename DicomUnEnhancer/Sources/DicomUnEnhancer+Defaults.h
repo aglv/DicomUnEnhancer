@@ -9,10 +9,7 @@
 #import "DicomUnEnhancer.h"
 
 extern NSString* const DicomUnEnhancerDICOMModeTagDefaultsKey;
-extern NSString* const DicomUnEnhancerNIfTIOutputNamingDateDefaultsKey;
-extern NSString* const DicomUnEnhancerNIfTIOutputNamingEventsDefaultsKey;
-extern NSString* const DicomUnEnhancerNIfTIOutputNamingIDDefaultsKey;
-extern NSString* const DicomUnEnhancerNIfTIOutputNamingProtocolDefaultsKey;
+extern NSString* const DicomUnEnhancerNIfTIOutputNamingDefaultsKey;
 extern NSString* const DicomUnEnhancerNIfTIReorientToNearestOrthogonalDefaultsKey;
 extern NSString* const DicomUnEnhancerNIfTIAnonymizeDefaultsKey;
 extern NSString* const DicomUnEnhancerNIfTIGzipOutputDefaultsKey;
