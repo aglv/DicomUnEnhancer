@@ -210,11 +210,9 @@
 			buildPhases = (
 				8D5B49AD048680CD000E48DA /* Headers */,
 				8D5B49AF048680CD000E48DA /* Resources */,
-				599BEEFB1429C47600B45236 /* Copy Executables */,
 				8D5B49B1048680CD000E48DA /* Sources */,
 				8D5B49B3048680CD000E48DA /* Frameworks */,
-				8D5B49B5048680CD000E48DA /* Rez */,
-				71C9993B1F177D520030EF82 /* ShellScript */,
+				599BEEFB1429C47600B45236 /* Copy Executables */,
 			);
 			buildRules = (
 			);
@@ -274,16 +272,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXRezBuildPhase section */
-		8D5B49B5048680CD000E48DA /* Rez */ = {
-			isa = PBXRezBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXRezBuildPhase section */
-
 /* Begin PBXShellScriptBuildPhase section */
 		712368741F15435A00AA108F /* DCMTK */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -298,19 +286,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "sh \"$PROJECT_DIR/DicomUnEnhancer/DCMTK.sh\"";
-		};
-		71C9993B1F177D520030EF82 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
