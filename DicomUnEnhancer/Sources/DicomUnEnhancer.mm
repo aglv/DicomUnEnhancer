@@ -367,6 +367,8 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
             thread.progress = -1;
             
             if (mode == DicomUnEnhancerModeNIfTI) {
+                NSMutableArray *errors = [NSMutableArray array];
+                
                 for (NSUInteger i = 0; i < monoframePaths.count; ++i) {
                     thread.status = [NSString stringWithFormat:NSLocalizedString(@"Creating NIfTI %d of %d...", nil), i+1, monoframePaths.count];
                     thread.progress = -1;
@@ -416,20 +418,23 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
                     [NSFileManager.defaultManager removeItemAtPath:tmpDicomDir error:NULL];
                     
                     if (error)
-                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                            NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-                            alert.messageText = @"DicomUnEnhance dcm2niiX error";
-                            alert.informativeText = error;
-                            alert.alertStyle = NSAlertStyleCritical;
-                            [alert addButtonWithTitle:@"OK"];
-                            [alert beginSheetModalForWindow:[[BrowserController currentBrowser] window] completionHandler:nil];
-                        }];
+                        [errors addObject:error];
                 }
+                
+                if (errors.count)
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                        NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+                        alert.messageText = @"DicomUnEnhance dcm2niiX error";
+                        alert.informativeText = errors.firstObject;
+                        alert.alertStyle = NSAlertStyleCritical;
+                        [alert addButtonWithTitle:@"OK"];
+                        [alert beginSheetModalForWindow:[[BrowserController currentBrowser] window] completionHandler:nil];
+                    }];
             }
 
             thread.status = @"Done.";
             thread.progress = -1;
-           
+            
         } @catch (NSException* e) {
             NSLog(@"DicomUnEnhancer exception: %@", e.reason);
         }
