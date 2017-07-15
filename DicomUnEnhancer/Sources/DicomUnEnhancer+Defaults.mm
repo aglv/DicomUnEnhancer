@@ -32,7 +32,7 @@ NSString* const DicomUnEnhancerNIfTIGzipOutputDefaultsKey = @"DicomUnEnhancerNIf
 -(id)init {
     if (([super init])) {
         NSUserDefaults* defaults = NSUserDefaults.standardUserDefaults;
-        [defaults registerDefaults:@{ DicomUnEnhancerNIfTIOutputNamingDefaultsKey: @"%f_%p_%t_%s",
+        [defaults registerDefaults:@{ DicomUnEnhancerNIfTIOutputNamingDefaultsKey: @"%p_%t_%s",
                                       DicomUnEnhancerDICOMModeTagDefaultsKey: @(DicomUnEnhancerDICOMReplaceInDatabaseModeTag),
                                       DicomUnEnhancerNIfTIAnonymizeDefaultsKey: @NO,
                                       DicomUnEnhancerNIfTIGzipOutputDefaultsKey: @NO }];

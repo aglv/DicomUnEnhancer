@@ -394,14 +394,36 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
                                        @"-z", ([NSUserDefaults.standardUserDefaults boolForKey:DicomUnEnhancerNIfTIGzipOutputDefaultsKey]? @"y" : @"n"),
                                        tmpDicomDir ];
                     
-                    NSTask* task = [[[NSTask alloc] init] autorelease];
-                    task.launchPath = [[NSBundle bundleForClass:[self class]] pathForAuxiliaryExecutable:@"dcm2niix"];
-                    task.arguments = args;
-                    [task launch];
-                    while( [task isRunning]) [NSThread sleepForTimeInterval: 0.01];
-                        [task interrupt];
+                    NSString *error = nil;
+                    // dcm2niix sometimes fails, try up to 10 times
+                    for (size_t i = 0; i < 10; ++i) {
+                        NSTask *task = [[[NSTask alloc] init] autorelease];
+                        task.launchPath = [[NSBundle bundleForClass:[self class]] pathForAuxiliaryExecutable:@"dcm2niix"];
+                        task.arguments = args;
+                        task.standardError = [NSPipe pipe];
+                        [task launch];
+                        
+                        while ([task isRunning])
+                            [NSThread sleepForTimeInterval: 0.01];
+                        
+                        if ([task terminationStatus] == 0) {
+                            error = nil;
+                            break; // otherwise, try again
+                        } else
+                            error = [[NSString alloc] initWithData:[[task.standardError fileHandleForReading] availableData] encoding:NSUTF8StringEncoding];
+                    }
                     
                     [NSFileManager.defaultManager removeItemAtPath:tmpDicomDir error:NULL];
+                    
+                    if (error)
+                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                            NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+                            alert.messageText = @"DicomUnEnhance dcm2niiX error";
+                            alert.informativeText = error;
+                            alert.alertStyle = NSAlertStyleCritical;
+                            [alert addButtonWithTitle:@"OK"];
+                            [alert beginSheetModalForWindow:[[BrowserController currentBrowser] window] completionHandler:nil];
+                        }];
                 }
             }
 

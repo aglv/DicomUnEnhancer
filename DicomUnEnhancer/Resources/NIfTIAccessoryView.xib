@@ -11,7 +11,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView misplaced="YES" id="1">
             <rect key="frame" x="0.0" y="0.0" width="463" height="143"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
@@ -28,7 +28,7 @@
                 <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="Jqs-6f-Dvo">
                     <rect key="frame" x="137" y="116" width="306" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <string key="toolTip">%a=antenna  (coil) number, %c=comments, %d=description, %e echo number, %f=folder name, %i ID of patient, %j seriesInstanceUID, %k studyInstanceUID, %m=manufacturer, %n=name of patient, %p=protocol, %s=series number, %t=time, %u=acquisition number, %x study ID; %z sequence name</string>
+                    <string key="toolTip">%a=antenna (coil) number, %c=comments, %d=description, %e echo number, %i ID of patient, %j seriesInstanceUID, %k studyInstanceUID, %m=manufacturer, %n=name of patient, %p=protocol, %s=series number, %t=time, %u=acquisition number, %x study ID; %z sequence name</string>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="uDB-Ka-Jqv">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -65,15 +65,15 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" id="FId-d0-vaP">
                         <font key="font" metaFont="smallSystem"/>
-                        <string key="title">These options are passed to dcm2niix. The DICOMs aren't preprocessed. dcm2niix losslessly reorients 3D images to the nearest orthogonal to an identity matrix (if the term "3D" appears in either 0018,0023 or 2005,106F). </string>
+                        <string key="title">These options are passed to dcm2niiX, which losslessly reorients 3D images to the nearest orthogonal to an identity matrix (if the term "3D" appears in either 0018,0023 or 2005,106F). </string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="Ytn-eo-JBk">
-                    <rect key="frame" x="17" y="7" width="159" height="14"/>
+                    <rect key="frame" x="17" y="7" width="391" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="@ 2017 OsiriX Team &amp; Volz.io" id="6kr-Ll-BnN">
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="© 2011-2017 OsiriX Team &amp; Volz.io - dcm2niiX © 2014-2017 Chris Rorden" id="6kr-Ll-BnN">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
