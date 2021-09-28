@@ -4,3 +4,6 @@
 [submodule "DCMTK"]
 	path = DCMTK
 	url = git@github.com:aglv/DCMTK.git
+[submodule "libtiff"]
+	path = libtiff
+	url = git@gitlab.com:libtiff/libtiff.git
