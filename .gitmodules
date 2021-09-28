@@ -7,3 +7,6 @@
 [submodule "libtiff"]
 	path = libtiff
 	url = git@gitlab.com:libtiff/libtiff.git
+[submodule "OpenJPEG"]
+	path = OpenJPEG
+	url = https://github.com/uclouvain/openjpeg.git
