@@ -1,12 +1,12 @@
 [submodule "OsiriX-API"]
-	path = OsiriX-API
+	path = DicomUnEnhancer/ThirdParty/OsiriX-API
 	url = git@github.com:aglv/OsiriX-API.git
 [submodule "DCMTK"]
-	path = DCMTK
-	url = git@github.com:aglv/DCMTK.git
+	path = DicomUnEnhancer/ThirdParty/DCMTK
+	url = git@github.com:DCMTK/dcmtk.git
 [submodule "libtiff"]
-	path = libtiff
+	path = DicomUnEnhancer/ThirdParty/LibTIFF
 	url = git@gitlab.com:libtiff/libtiff.git
 [submodule "OpenJPEG"]
-	path = OpenJPEG
+	path = DicomUnEnhancer/ThirdParty/OpenJPEG
 	url = https://github.com/uclouvain/openjpeg.git
