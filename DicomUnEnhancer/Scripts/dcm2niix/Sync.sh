@@ -9,6 +9,6 @@ versioned_filename="dcm2niix_${NATIVE_ARCH}_$(cd "$source_dir" && git describe -
 
 rsync -avz "$install_dir/bin/dcm2niix" "$TARGET_BUILD_DIR/$versioned_filename"
 
-rm "$TARGET_BUILD_DIR/dcm2niix"
+rm -f "$TARGET_BUILD_DIR/dcm2niix"
 ln -s "$versioned_filename" "$TARGET_BUILD_DIR/dcm2niix"
 
