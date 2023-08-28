@@ -6,7 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <OsiriX/PluginFilter.h>
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#import <OsiriXAPI/PluginFilter.h>
+#pragma clang diagnostic pop
 
 @interface DicomUnEnhancer : PluginFilter {
 

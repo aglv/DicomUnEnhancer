@@ -10,3 +10,6 @@
 [submodule "OpenJPEG"]
 	path = DicomUnEnhancer/ThirdParty/OpenJPEG
 	url = https://github.com/uclouvain/openjpeg.git
+[submodule "DicomUnEnhancer/ThirdParty/dcm2niix"]
+	path = DicomUnEnhancer/ThirdParty/dcm2niix
+	url = git@github.com:rordenlab/dcm2niix.git

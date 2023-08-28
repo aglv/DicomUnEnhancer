@@ -8,16 +8,21 @@
 
 #import "DicomUnEnhancer.h"
 
-extern NSString* const DicomUnEnhancerDICOMModeTagDefaultsKey;
-extern NSString* const DicomUnEnhancerNIfTIOutputNamingDefaultsKey;
-extern NSString* const DicomUnEnhancerNIfTIReorientToNearestOrthogonalDefaultsKey;
-extern NSString* const DicomUnEnhancerNIfTIAnonymizeDefaultsKey;
-extern NSString* const DicomUnEnhancerNIfTIGzipOutputDefaultsKey;
+extern NSString * const DicomUnEnhancerDicomModeDefaultsKey;
+extern NSString * const DicomUnEnhancerNIfTIOutputNamingDefaultsKey;
+extern NSString * const DicomUnEnhancerNIfTIReorientToNearestOrthogonalDefaultsKey;
+extern NSString * const DicomUnEnhancerNIfTIAnonymizeDefaultsKey;
+extern NSString * const DicomUnEnhancerNIfTIGzipOutputDefaultsKey;
 
-enum {
-    DicomUnEnhancerDICOMReplaceInDatabaseModeTag = 0,
-    DicomUnEnhancerDICOMExportModeTag = 1
+typedef NS_ENUM(NSInteger, DicomUnEnhancerDicomMode) {
+    DicomUnEnhancerDicomModeLibrary = 0,
+    DicomUnEnhancerDicomModeFilesystem = 1,
 };
+
+//enum {
+//    DicomUnEnhancerDICOMReplaceInDatabaseModeTag = 0,
+//    DicomUnEnhancerDicomModeTag = 1
+//};
 
 @interface DicomUnEnhancer (Defaults)
 

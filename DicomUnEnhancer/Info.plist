@@ -8,25 +8,27 @@
 	<string>DicomUnEnhancer</string>
 	<key>CFBundleIconFile</key>
 	<string>DicomUnEnhancer</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.2.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.2.3</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.2.3</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>© 2017 OsiriX Team &amp; Volz.io</string>
-	<key>NSPrincipalClass</key>
-	<string>DicomUnEnhancer</string>
 	<key>MenuTitles</key>
 	<array>
 		<string>Save as non-enhanced DICOM</string>
 		<string>Save as NIfTI</string>
 	</array>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2017 OsiriX Team &amp; Volz.io</string>
+	<key>NSPrincipalClass</key>
+	<string>DicomUnEnhancer</string>
 	<key>pluginType</key>
 	<string>Database</string>
 </dict>

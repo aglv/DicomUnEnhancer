@@ -7,11 +7,16 @@
 //
 
 #import "DicomUnEnhancerDCMTK.h"
-#import <OsiriX/NSFileManager+N2.h>
-#import <OsiriX/NSThread+N2.h>
-#import <DCMTK/dcmimgle/dcmimage.h>
-#import <DCMTK/dcmdata/dcfilefo.h>
-#import <DCMTK/dcmdata/dcuid.h>
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#import <OsiriXAPI/NSFileManager+N2.h>
+#import <OsiriXAPI/NSThread+N2.h>
+#pragma clang diagnostic pop
+
+#import <dcmtk/dcmimgle/dcmimage.h>
+#import <dcmtk/dcmdata/dcfilefo.h>
+#import <dcmtk/dcmdata/dcuid.h>
 
 /*void describe(DcmSequenceOfItems* items) {
     for (unsigned int i = 0; i < items->card(); ++i) {

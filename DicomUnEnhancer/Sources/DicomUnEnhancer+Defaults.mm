@@ -7,13 +7,17 @@
 //
 
 #import "DicomUnEnhancer+Defaults.h"
-#import <OsiriX/NSUserDefaultsController+N2.h>
 
-NSString* const DicomUnEnhancerDICOMModeTagDefaultsKey = @"DicomUnEnhancerDICOMModeTag";
-NSString* const DicomUnEnhancerNIfTIOutputNamingDefaultsKey = @"DicomUnEnhancerNIfTIOutputNaming";
-NSString* const DicomUnEnhancerNIfTIReorientToNearestOrthogonalDefaultsKey = @"DicomUnEnhancerNIfTIReorientToNearestOrthogonal";
-NSString* const DicomUnEnhancerNIfTIAnonymizeDefaultsKey = @"DicomUnEnhancerNIfTIAnonymize";
-NSString* const DicomUnEnhancerNIfTIGzipOutputDefaultsKey = @"DicomUnEnhancerNIfTIGzipOutput";
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#import <OsiriXAPI/NSUserDefaultsController+N2.h>
+#pragma clang diagnostic pop
+
+NSString * const DicomUnEnhancerDicomModeDefaultsKey = @"DicomUnEnhancerDICOMModeTag";
+NSString * const DicomUnEnhancerNIfTIOutputNamingDefaultsKey = @"DicomUnEnhancerNIfTIOutputNaming";
+NSString * const DicomUnEnhancerNIfTIReorientToNearestOrthogonalDefaultsKey = @"DicomUnEnhancerNIfTIReorientToNearestOrthogonal";
+NSString * const DicomUnEnhancerNIfTIAnonymizeDefaultsKey = @"DicomUnEnhancerNIfTIAnonymize";
+NSString * const DicomUnEnhancerNIfTIGzipOutputDefaultsKey = @"DicomUnEnhancerNIfTIGzipOutput";
 
 @interface _DicomUnEnhancerDefaultsHelper : NSObject
 
@@ -33,7 +37,7 @@ NSString* const DicomUnEnhancerNIfTIGzipOutputDefaultsKey = @"DicomUnEnhancerNIf
     if (([super init])) {
         NSUserDefaults* defaults = NSUserDefaults.standardUserDefaults;
         [defaults registerDefaults:@{ DicomUnEnhancerNIfTIOutputNamingDefaultsKey: @"%p_%t_%s",
-                                      DicomUnEnhancerDICOMModeTagDefaultsKey: @(DicomUnEnhancerDICOMReplaceInDatabaseModeTag),
+                                      DicomUnEnhancerDicomModeDefaultsKey: @(DicomUnEnhancerDicomModeLibrary),
                                       DicomUnEnhancerNIfTIAnonymizeDefaultsKey: @NO,
                                       DicomUnEnhancerNIfTIGzipOutputDefaultsKey: @NO }];
 //        [defaults addObserver:self forValuesKey:DicomUnEnhancerNIfTIOutputNamingDateDefaultsKey options:NSKeyValueObservingOptionInitial context:nil];

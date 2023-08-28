@@ -7,12 +7,15 @@
 //
 
 #import "DicomUnEnhancer+Versions.h"
-//#include <execinfo.h>
 #include <sys/sysctl.h>
-#include <OsiriX/N2Shell.h>
-#include <OsiriX/N2WebServiceClient.h>
-#include <OsiriX/JSON.h>
-#include <OsiriX/BrowserController.h>
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#include <OsiriXAPI/N2Shell.h>
+#include <OsiriXAPI/N2WebServiceClient.h>
+#include <OsiriXAPI/JSON.h>
+#include <OsiriXAPI/BrowserController.h>
+#pragma clang diagnostic pop
 
 @implementation DicomUnEnhancer (Versions)
 
@@ -127,9 +130,9 @@
                     alert.informativeText = NSLocalizedString(@"Please download and install the updated version.", nil);
                     
                     NSButton *ok = [alert addButtonWithTitle:NSLocalizedString(@"Update", nil)];
-                    ok.tag = NSFileHandlingPanelOKButton;
+                    ok.tag = NSModalResponseOK;
                     NSButton *cancel = [alert addButtonWithTitle:NSLocalizedString(@"Continue", nil)];
-                    cancel.tag = NSFileHandlingPanelCancelButton;
+                    cancel.tag = NSModalResponseCancel;
                     cancel.keyEquivalent = @"\e";
                 }
                 
@@ -137,7 +140,7 @@
                     [NSThread sleepForTimeInterval:1];
                 
                 [alert beginSheetModalForWindow:[[BrowserController currentBrowser] window] completionHandler:^(NSModalResponse returnCode) {
-                    if (returnCode != NSFileHandlingPanelOKButton)
+                    if (returnCode != NSModalResponseOK)
                         return;
                     
                     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:response[@"html"] relativeToURL:cli.url]];

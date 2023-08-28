@@ -3,12 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 54;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		716C32442A8D5AA40038533B /* DCMTK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 716C32452A8D5AA40038533B /* Build configuration list for PBXAggregateTarget "DCMTK" */;
+			buildPhases = (
+				716C32482A8D5AAC0038533B /* CMake */,
+				716C32492A8D5AB30038533B /* Make */,
+			);
+			dependencies = (
+			);
+			name = DCMTK;
+			productName = DCMTK;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		59391B1F144C0978007B330D /* NIfTIAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59391B1E144C0978007B330D /* NIfTIAccessoryView.xib */; };
-		59391B23144C21ED007B330D /* DICOMAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59391B22144C21ED007B330D /* DICOMAccessoryView.xib */; };
 		59391B27144C2454007B330D /* DicomUnEnhancerNIfTIAccessoryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 59391B24144C2454007B330D /* DicomUnEnhancerNIfTIAccessoryViewController.h */; };
 		59391B28144C2454007B330D /* DicomUnEnhancerNIfTIAccessoryViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 59391B25144C2454007B330D /* DicomUnEnhancerNIfTIAccessoryViewController.mm */; };
 		59391B2C144C2C7A007B330D /* DicomUnEnhancer+Defaults.h in Headers */ = {isa = PBXBuildFile; fileRef = 59391B2A144C2C7A007B330D /* DicomUnEnhancer+Defaults.h */; };
@@ -17,46 +30,32 @@
 		5939C3AD144713E300A6D158 /* DicomUnEnhancer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5939C3A9144713E300A6D158 /* DicomUnEnhancer.mm */; };
 		5939C3AE144713E300A6D158 /* DicomUnEnhancerDCMTK.h in Headers */ = {isa = PBXBuildFile; fileRef = 5939C3AA144713E300A6D158 /* DicomUnEnhancerDCMTK.h */; };
 		5939C3AF144713E300A6D158 /* DicomUnEnhancerDCMTK.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5939C3AB144713E300A6D158 /* DicomUnEnhancerDCMTK.mm */; };
-		599BEEFC1429C48100B45236 /* dcm2niix in Copy Executables */ = {isa = PBXBuildFile; fileRef = 599BEEF91429C45D00B45236 /* dcm2niix */; };
-		599BEEFE1429C49400B45236 /* dcm2niix.info.txt in Copy Executables */ = {isa = PBXBuildFile; fileRef = 599BEEFD1429C49400B45236 /* dcm2niix.info.txt */; };
 		59A48A9314471CFA00B934DD /* DicomUnEnhancer.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A48A9214471CFA00B934DD /* DicomUnEnhancer.png */; };
-		59F3430F14448535004904DE /* OsiriX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F3430E14448535004904DE /* OsiriX.framework */; };
+		7140B4072A9C87F2005470AA /* DicomUnEnhancerDICOMAccessoryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7140B4052A9C87F2005470AA /* DicomUnEnhancerDICOMAccessoryViewController.h */; };
+		7140B4082A9C87F2005470AA /* DicomUnEnhancerDICOMAccessoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7140B4062A9C87F2005470AA /* DicomUnEnhancerDICOMAccessoryViewController.m */; };
+		7140B4092A9C882C005470AA /* NIfTIAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7140B40B2A9C882C005470AA /* NIfTIAccessoryView.xib */; };
+		7140B40C2A9C8831005470AA /* DICOMAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7140B40E2A9C8831005470AA /* DICOMAccessoryView.xib */; };
 		7158D2291F16171600AEBAB5 /* DicomUnEnhancer+Versions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7158D2271F16171600AEBAB5 /* DicomUnEnhancer+Versions.h */; };
 		7158D22A1F16171600AEBAB5 /* DicomUnEnhancer+Versions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7158D2281F16171600AEBAB5 /* DicomUnEnhancer+Versions.m */; };
+		716C324C2A8D712B0038533B /* OsiriXAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716C32312A8D526C0038533B /* OsiriXAPI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		716C324E2A8D73D20038533B /* dcm2niix.info.txt in Resources */ = {isa = PBXBuildFile; fileRef = 716C324D2A8D73D20038533B /* dcm2niix.info.txt */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		716A51901F16101C00A69A3C /* PBXContainerItemProxy */ = {
+		716C324A2A8D5AE30038533B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7123686B1F1542FB00AA108F;
+			remoteGlobalIDString = 716C32442A8D5AA40038533B;
 			remoteInfo = DCMTK;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		599BEEFB1429C47600B45236 /* Copy Executables */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 6;
-			files = (
-				599BEEFC1429C48100B45236 /* dcm2niix in Copy Executables */,
-				599BEEFE1429C49400B45236 /* dcm2niix.info.txt in Copy Executables */,
-			);
-			name = "Copy Executables";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		59391B1E144C0978007B330D /* NIfTIAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NIfTIAccessoryView.xib; sourceTree = "<group>"; };
-		59391B22144C21ED007B330D /* DICOMAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DICOMAccessoryView.xib; sourceTree = "<group>"; };
 		59391B24144C2454007B330D /* DicomUnEnhancerNIfTIAccessoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DicomUnEnhancerNIfTIAccessoryViewController.h; sourceTree = "<group>"; };
 		59391B25144C2454007B330D /* DicomUnEnhancerNIfTIAccessoryViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DicomUnEnhancerNIfTIAccessoryViewController.mm; sourceTree = "<group>"; };
 		59391B2A144C2C7A007B330D /* DicomUnEnhancer+Defaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DicomUnEnhancer+Defaults.h"; sourceTree = "<group>"; };
@@ -65,14 +64,17 @@
 		5939C3A9144713E300A6D158 /* DicomUnEnhancer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DicomUnEnhancer.mm; sourceTree = "<group>"; };
 		5939C3AA144713E300A6D158 /* DicomUnEnhancerDCMTK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DicomUnEnhancerDCMTK.h; sourceTree = "<group>"; };
 		5939C3AB144713E300A6D158 /* DicomUnEnhancerDCMTK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DicomUnEnhancerDCMTK.mm; sourceTree = "<group>"; };
-		599BEEF91429C45D00B45236 /* dcm2niix */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = dcm2niix; sourceTree = "<group>"; };
-		599BEEFD1429C49400B45236 /* dcm2niix.info.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dcm2niix.info.txt; sourceTree = "<group>"; };
 		59A48A9214471CFA00B934DD /* DicomUnEnhancer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DicomUnEnhancer.png; sourceTree = "<group>"; };
-		59F3430E14448535004904DE /* OsiriX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OsiriX.framework; path = "OsiriX-API/OsiriX.framework"; sourceTree = "<group>"; };
-		7123686C1F1542FB00AA108F /* DCMTK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DCMTK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		712368761F1543C700AA108F /* DCMTK.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = DCMTK.sh; path = DicomUnEnhancer/DCMTK.sh; sourceTree = "<group>"; };
+		7140B4052A9C87F2005470AA /* DicomUnEnhancerDICOMAccessoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DicomUnEnhancerDICOMAccessoryViewController.h; sourceTree = "<group>"; };
+		7140B4062A9C87F2005470AA /* DicomUnEnhancerDICOMAccessoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DicomUnEnhancerDICOMAccessoryViewController.m; sourceTree = "<group>"; };
+		7140B40A2A9C882C005470AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NIfTIAccessoryView.xib; sourceTree = "<group>"; };
+		7140B40D2A9C8831005470AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DICOMAccessoryView.xib; sourceTree = "<group>"; };
+		7140B41A2A9C9628005470AA /* dcm2niix */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = dcm2niix; sourceTree = BUILT_PRODUCTS_DIR; };
 		7158D2271F16171600AEBAB5 /* DicomUnEnhancer+Versions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DicomUnEnhancer+Versions.h"; sourceTree = "<group>"; };
 		7158D2281F16171600AEBAB5 /* DicomUnEnhancer+Versions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DicomUnEnhancer+Versions.m"; sourceTree = "<group>"; };
+		716C32312A8D526C0038533B /* OsiriXAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OsiriXAPI.framework; path = "DicomUnEnhancer/ThirdParty/OsiriX-API/OsiriXAPI.framework"; sourceTree = "<group>"; };
+		716C324D2A8D73D20038533B /* dcm2niix.info.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dcm2niix.info.txt; sourceTree = "<group>"; };
+		718A66222702E0890036AC88 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Scripts; path = DicomUnEnhancer/Scripts; sourceTree = "<group>"; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DicomUnEnhancer/Info.plist; sourceTree = "<group>"; };
 		AB5D36050680E57E00F4007A /* DicomUnEnhancer.osirixplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DicomUnEnhancer.osirixplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -82,8 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				716C324C2A8D712B0038533B /* OsiriXAPI.framework in Frameworks */,
 				8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */,
-				59F3430F14448535004904DE /* OsiriX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +99,7 @@
 				08FB77AFFE84173DC02AAC07 /* Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
 				599BEEF81429C44B00B45236 /* Binaries */,
-				712368751F15437500AA108F /* Scripts */,
+				718A66222702E0890036AC88 /* Scripts */,
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
 			);
@@ -107,7 +109,7 @@
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				59F3430E14448535004904DE /* OsiriX.framework */,
+				716C32312A8D526C0038533B /* OsiriXAPI.framework */,
 				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
 				089C1672FE841209C02AAC07 /* Foundation.framework */,
 				089C167FFE841241C02AAC07 /* AppKit.framework */,
@@ -119,8 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				59A48A9214471CFA00B934DD /* DicomUnEnhancer.png */,
-				59391B1E144C0978007B330D /* NIfTIAccessoryView.xib */,
-				59391B22144C21ED007B330D /* DICOMAccessoryView.xib */,
 			);
 			name = Resources;
 			path = DicomUnEnhancer/Resources;
@@ -137,8 +137,7 @@
 				59391B2B144C2C7A007B330D /* DicomUnEnhancer+Defaults.mm */,
 				5939C3AA144713E300A6D158 /* DicomUnEnhancerDCMTK.h */,
 				5939C3AB144713E300A6D158 /* DicomUnEnhancerDCMTK.mm */,
-				59391B24144C2454007B330D /* DicomUnEnhancerNIfTIAccessoryViewController.h */,
-				59391B25144C2454007B330D /* DicomUnEnhancerNIfTIAccessoryViewController.mm */,
+				7140B40F2A9C8897005470AA /* Views */,
 			);
 			name = Sources;
 			path = DicomUnEnhancer/Sources;
@@ -148,7 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				AB5D36050680E57E00F4007A /* DicomUnEnhancer.osirixplugin */,
-				7123686C1F1542FB00AA108F /* DCMTK.framework */,
+				7140B41A2A9C9628005470AA /* dcm2niix */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,19 +155,23 @@
 		599BEEF81429C44B00B45236 /* Binaries */ = {
 			isa = PBXGroup;
 			children = (
-				599BEEF91429C45D00B45236 /* dcm2niix */,
-				599BEEFD1429C49400B45236 /* dcm2niix.info.txt */,
+				716C324D2A8D73D20038533B /* dcm2niix.info.txt */,
 			);
 			name = Binaries;
 			path = DicomUnEnhancer/Binaries;
 			sourceTree = "<group>";
 		};
-		712368751F15437500AA108F /* Scripts */ = {
+		7140B40F2A9C8897005470AA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				712368761F1543C700AA108F /* DCMTK.sh */,
+				7140B40B2A9C882C005470AA /* NIfTIAccessoryView.xib */,
+				59391B24144C2454007B330D /* DicomUnEnhancerNIfTIAccessoryViewController.h */,
+				59391B25144C2454007B330D /* DicomUnEnhancerNIfTIAccessoryViewController.mm */,
+				7140B40E2A9C8831005470AA /* DICOMAccessoryView.xib */,
+				7140B4052A9C87F2005470AA /* DicomUnEnhancerDICOMAccessoryViewController.h */,
+				7140B4062A9C87F2005470AA /* DicomUnEnhancerDICOMAccessoryViewController.m */,
 			);
-			name = Scripts;
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +184,7 @@
 				5939C3AC144713E300A6D158 /* DicomUnEnhancer.h in Headers */,
 				7158D2291F16171600AEBAB5 /* DicomUnEnhancer+Versions.h in Headers */,
 				5939C3AE144713E300A6D158 /* DicomUnEnhancerDCMTK.h in Headers */,
+				7140B4072A9C87F2005470AA /* DicomUnEnhancerDICOMAccessoryViewController.h in Headers */,
 				59391B27144C2454007B330D /* DicomUnEnhancerNIfTIAccessoryViewController.h in Headers */,
 				59391B2C144C2C7A007B330D /* DicomUnEnhancer+Defaults.h in Headers */,
 			);
@@ -189,20 +193,22 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		7123686B1F1542FB00AA108F /* DCMTK */ = {
+		7140B4192A9C9628005470AA /* dcm2niix */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 712368711F1542FB00AA108F /* Build configuration list for PBXNativeTarget "DCMTK" */;
+			buildConfigurationList = 7140B41E2A9C9628005470AA /* Build configuration list for PBXNativeTarget "dcm2niix" */;
 			buildPhases = (
-				712368741F15435A00AA108F /* DCMTK */,
+				7140B4212A9C9659005470AA /* CMake */,
+				7140B4222A9C966D005470AA /* Make */,
+				7140B4242A9C9841005470AA /* Sync */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = DCMTK;
-			productName = DCMTK;
-			productReference = 7123686C1F1542FB00AA108F /* DCMTK.framework */;
-			productType = "com.apple.product-type.framework";
+			name = dcm2niix;
+			productName = dcm2niix;
+			productReference = 7140B41A2A9C9628005470AA /* dcm2niix */;
+			productType = "com.apple.product-type.tool";
 		};
 		8D5B49AC048680CD000E48DA /* DicomUnEnhancer */ = {
 			isa = PBXNativeTarget;
@@ -212,12 +218,11 @@
 				8D5B49AF048680CD000E48DA /* Resources */,
 				8D5B49B1048680CD000E48DA /* Sources */,
 				8D5B49B3048680CD000E48DA /* Frameworks */,
-				599BEEFB1429C47600B45236 /* Copy Executables */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				716A51911F16101C00A69A3C /* PBXTargetDependency */,
+				716C324B2A8D5AE30038533B /* PBXTargetDependency */,
 			);
 			name = DicomUnEnhancer;
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -231,30 +236,32 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					7123686B1F1542FB00AA108F = {
-						CreatedOnToolsVersion = 8.3.2;
+					7140B4192A9C9628005470AA = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					716C32442A8D5AA40038533B = {
+						CreatedOnToolsVersion = 14.3.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = CE6A9A9408AC841300D0C1EE /* Build configuration list for PBXProject "DicomUnEnhancer" */;
 			compatibilityVersion = "Xcode 8.0";
-			developmentRegion = English;
+			developmentRegion = Base;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
-				Japanese,
-				French,
-				German,
+				Base,
 			);
 			mainGroup = 089C166AFE841209C02AAC07 /* ExportSeriesAsNifti */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				8D5B49AC048680CD000E48DA /* DicomUnEnhancer */,
-				7123686B1F1542FB00AA108F /* DCMTK */,
+				716C32442A8D5AA40038533B /* DCMTK */,
+				7140B4192A9C9628005470AA /* dcm2niix */,
 			);
 		};
 /* End PBXProject section */
@@ -265,27 +272,109 @@
 			buildActionMask = 2147483647;
 			files = (
 				59A48A9314471CFA00B934DD /* DicomUnEnhancer.png in Resources */,
-				59391B1F144C0978007B330D /* NIfTIAccessoryView.xib in Resources */,
-				59391B23144C21ED007B330D /* DICOMAccessoryView.xib in Resources */,
+				7140B4092A9C882C005470AA /* NIfTIAccessoryView.xib in Resources */,
+				7140B40C2A9C8831005470AA /* DICOMAccessoryView.xib in Resources */,
+				716C324E2A8D73D20038533B /* dcm2niix.info.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		712368741F15435A00AA108F /* DCMTK */ = {
+		7140B4212A9C9659005470AA /* CMake */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
 			);
-			name = DCMTK;
+			name = CMake;
+			outputFileListPaths = (
+			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "sh \"$PROJECT_DIR/DicomUnEnhancer/DCMTK.sh\"";
+			shellScript = "zsh \"DicomUnEnhancer/Scripts/dcm2niix/CMake.sh\"\n";
+		};
+		7140B4222A9C966D005470AA /* Make */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Make;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "zsh \"DicomUnEnhancer/Scripts/dcm2niix/Make.sh\"\n";
+		};
+		7140B4242A9C9841005470AA /* Sync */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Sync;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "zsh \"DicomUnEnhancer/Scripts/dcm2niix/Sync.sh\"\n";
+		};
+		716C32482A8D5AAC0038533B /* CMake */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = CMake;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sh \"$PROJECT_DIR/DicomUnEnhancer/Scripts/DCMTK/CMake.sh\"\n";
+		};
+		716C32492A8D5AB30038533B /* Make */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Make;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sh \"$PROJECT_DIR/DicomUnEnhancer/Scripts/DCMTK/Make.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -294,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7140B4082A9C87F2005470AA /* DicomUnEnhancerDICOMAccessoryViewController.m in Sources */,
 				5939C3AD144713E300A6D158 /* DicomUnEnhancer.mm in Sources */,
 				7158D22A1F16171600AEBAB5 /* DicomUnEnhancer+Versions.m in Sources */,
 				5939C3AF144713E300A6D158 /* DicomUnEnhancerDCMTK.mm in Sources */,
@@ -305,39 +395,83 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		716A51911F16101C00A69A3C /* PBXTargetDependency */ = {
+		716C324B2A8D5AE30038533B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7123686B1F1542FB00AA108F /* DCMTK */;
-			targetProxy = 716A51901F16101C00A69A3C /* PBXContainerItemProxy */;
+			target = 716C32442A8D5AA40038533B /* DCMTK */;
+			targetProxy = 716C324A2A8D5AE30038533B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		7140B40B2A9C882C005470AA /* NIfTIAccessoryView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7140B40A2A9C882C005470AA /* Base */,
+			);
+			name = NIfTIAccessoryView.xib;
+			sourceTree = "<group>";
+		};
+		7140B40E2A9C8831005470AA /* DICOMAccessoryView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7140B40D2A9C8831005470AA /* Base */,
+			);
+			name = DICOMAccessoryView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		712368721F1542FB00AA108F /* Debug */ = {
+		7140B41F2A9C9628005470AA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = R8G9BDMT59;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		712368731F1542FB00AA108F /* Release */ = {
+		7140B4202A9C9628005470AA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = R8G9BDMT59;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		716C32462A8D5AA40038533B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R8G9BDMT59;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		716C32472A8D5AA40038533B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R8G9BDMT59;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
 		CE6A9A9108AC841300D0C1EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUGGING_SYMBOLS = YES;
+				DEVELOPMENT_TEAM = R8G9BDMT59;
 				FRAMEWORK_SEARCH_PATHS = (
-					"OsiriX-API",
 					"$(inherited)",
+					"$(PROJECT_DIR)/DicomUnEnhancer/ThirdParty/OsiriX-API",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_TRIGRAPHS = NO;
@@ -347,24 +481,22 @@
 				GCC_PREFIX_HEADER = DicomUnEnhancer/DicomUnEnhancer_Prefix.pch;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = $CONFIGURATION_TEMP_DIR/DCMTK.build/Install/include;
 				INFOPLIST_FILE = DicomUnEnhancer/Info.plist;
 				INSTALL_PATH = /Plugins;
-				LIBRARY_SEARCH_PATHS = "";
 				LIBRARY_STYLE = Bundle;
-				OTHER_CFLAGS = "-D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES=0";
+				OTHER_CFLAGS = (
+					"-Wno-quoted-include-in-framework-header",
+					"-Wno-nonportable-include-path",
+					"-Wno-shorten-64-to-32",
+				);
 				OTHER_LDFLAGS = (
 					"-undefined",
 					dynamic_lookup,
 				);
-				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = io.volz.dicomunenhancer;
 				PRODUCT_NAME = DicomUnEnhancer;
-				SECTORDER_FLAGS = "";
-				USER_HEADER_SEARCH_PATHS = "../../osirix/Binaries/dcmtk-source/dcmimgle ../../osirix/Binaries/dcmtk-source/config ../../osirix/Binaries/dcmtk-source/ofstd ../../osirix/Binaries/dcmtk-source/dcmdata";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = osirixplugin;
 				ZERO_LINK = NO;
 			};
@@ -373,35 +505,36 @@
 		CE6A9A9208AC841300D0C1EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = R8G9BDMT59;
 				FRAMEWORK_SEARCH_PATHS = (
-					"OsiriX-API",
 					"$(inherited)",
+					"$(PROJECT_DIR)/DicomUnEnhancer/ThirdParty/OsiriX-API",
 				);
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DicomUnEnhancer/DicomUnEnhancer_Prefix.pch;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = $CONFIGURATION_TEMP_DIR/DCMTK.build/Install/include;
 				INFOPLIST_FILE = DicomUnEnhancer/Info.plist;
 				INSTALL_PATH = /Plugins;
-				LIBRARY_SEARCH_PATHS = "";
 				LIBRARY_STYLE = Bundle;
-				OTHER_CFLAGS = "-D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES=0";
+				OTHER_CFLAGS = (
+					"-Wno-quoted-include-in-framework-header",
+					"-Wno-nonportable-include-path",
+					"-Wno-shorten-64-to-32",
+				);
 				OTHER_LDFLAGS = (
 					"-undefined",
 					dynamic_lookup,
 				);
-				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = io.volz.dicomunenhancer;
 				PRODUCT_NAME = DicomUnEnhancer;
-				SECTORDER_FLAGS = "";
-				USER_HEADER_SEARCH_PATHS = "../../osirix/Binaries/dcmtk-source/dcmimgle ../../osirix/Binaries/dcmtk-source/config ../../osirix/Binaries/dcmtk-source/ofstd ../../osirix/Binaries/dcmtk-source/dcmdata";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = osirixplugin;
 				ZERO_LINK = NO;
 			};
@@ -410,10 +543,39 @@
 		CE6A9A9508AC841300D0C1EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -421,10 +583,37 @@
 		CE6A9A9608AC841300D0C1EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -432,11 +621,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		712368711F1542FB00AA108F /* Build configuration list for PBXNativeTarget "DCMTK" */ = {
+		7140B41E2A9C9628005470AA /* Build configuration list for PBXNativeTarget "dcm2niix" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				712368721F1542FB00AA108F /* Debug */,
-				712368731F1542FB00AA108F /* Release */,
+				7140B41F2A9C9628005470AA /* Debug */,
+				7140B4202A9C9628005470AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		716C32452A8D5AA40038533B /* Build configuration list for PBXAggregateTarget "DCMTK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				716C32462A8D5AA40038533B /* Debug */,
+				716C32472A8D5AA40038533B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

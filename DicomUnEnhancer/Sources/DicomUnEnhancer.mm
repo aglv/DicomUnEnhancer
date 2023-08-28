@@ -8,17 +8,24 @@
 #import "DicomUnEnhancer.h"
 #import "DicomUnEnhancer+Defaults.h"
 #import "DicomUnEnhancer+Versions.h"
-#import <OsiriX/DicomStudy.h>
-#import <OsiriX/DicomSeries.h>
-#import <OsiriX/DicomAlbum.h>
-#import <OsiriX/DicomImage.h>
-#import <OsiriX/BrowserController.h>
-#import <OsiriX/NSString+N2.h>
-#import <OsiriX/NSFileManager+N2.h>
-#import <OsiriX/ThreadModalForWindowController.h>
-#import <OsiriX/NSThread+N2.h>
-#import <OsiriX/DicomDatabase.h>
 #import "DicomUnEnhancerDCMTK.h"
+#import "DicomUnEnhancerNIfTIAccessoryViewController.h"
+#import "DicomUnEnhancerDICOMAccessoryViewController.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#import <OsiriXAPI/DicomStudy.h>
+#import <OsiriXAPI/DicomSeries.h>
+#import <OsiriXAPI/DicomAlbum.h>
+#import <OsiriXAPI/DicomImage.h>
+#import <OsiriXAPI/BrowserController.h>
+#import <OsiriXAPI/NSString+N2.h>
+#import <OsiriXAPI/NSFileManager+N2.h>
+#import <OsiriXAPI/ThreadModalForWindowController.h>
+#import <OsiriXAPI/NSThread+N2.h>
+#import <OsiriXAPI/DicomDatabase.h>
+#pragma clang diagnostic pop
+
 #import <objc/runtime.h>
 #include <stdlib.h>
 
@@ -159,6 +166,12 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
 
 #pragma mark Processing
 
++ (NSArray *)arrayWithSet:(id)set {
+    if ([set isKindOfClass:NSSet.class])
+        return [set allObjects];
+    return [set array];
+}
+
 +(NSArray*)_uniqueObjectsInArray:(NSArray*)objects {
     NSMutableArray* r = [NSMutableArray array];
     
@@ -187,7 +200,7 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
 
 -(void)_processMode:(NSInteger)mode forWindowController:(id)controller {
     if (![NSUserDefaults.standardUserDefaults boolForKey:@"CarelessDicomUnEnhancer"])
-        if ([[NSAlert alertWithMessageText:@"DicomUnEnhancer" defaultButton:@"Continue" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"THE SOFTWARE IS PROVIDED AS IS. USE THE SOFTWARE AT YOUR OWN RISK. THE AUTHORS MAKE NO WARRANTIES AS TO PERFORMANCE OR FITNESS FOR A PARTICULAR PURPOSE, OR ANY OTHER WARRANTIES WHETHER EXPRESSED OR IMPLIED. NO ORAL OR WRITTEN COMMUNICATION FROM OR INFORMATION PROVIDED BY THE AUTHORS SHALL CREATE A WARRANTY. UNDER NO CIRCUMSTANCES SHALL THE AUTHORS BE LIABLE FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES RESULTING FROM THE USE, MISUSE, OR INABILITY TO USE THE SOFTWARE, EVEN IF THE AUTHOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THESE EXCLUSIONS AND LIMITATIONS MAY NOT APPLY IN ALL JURISDICTIONS. YOU MAY HAVE ADDITIONAL RIGHTS AND SOME OF THESE LIMITATIONS MAY NOT APPLY TO YOU.\n\nTHIS SOFTWARE IS NOT INTENDED FOR PRIMARY DIAGNOSTIC, ONLY FOR SCIENTIFIC USAGE.\n\nTHE VERSION OF OSIRIX USED MAY NOT BE CERTIFIED AS A MEDICAL DEVICE FOR PRIMARY DIAGNOSIS. IF YOUR VERSION IS NOT CERTIFIED, YOU CAN ONLY USE OSIRIX AS A REVIEWING AND SCIENTIFIC SOFTWARE, NOT FOR PRIMARY DIAGNOSTIC.\n\nAll calculations, measurements and images provided by this software are intended only for scientific research. Any other use is entirely at the discretion and risk of the user. If you do use this software for scientific research please give appropriate credit in publications. This software may not be redistributed, sold or commercially used in any other way without prior approval of the author."] runModal] ==  NSAlertAlternateReturn)
+        if ([[NSAlert alertWithMessageText:@"DicomUnEnhancer" defaultButton:@"Continue" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"THE SOFTWARE IS PROVIDED AS IS. USE THE SOFTWARE AT YOUR OWN RISK. THE AUTHORS MAKE NO WARRANTIES AS TO PERFORMANCE OR FITNESS FOR A PARTICULAR PURPOSE, OR ANY OTHER WARRANTIES WHETHER EXPRESSED OR IMPLIED. NO ORAL OR WRITTEN COMMUNICATION FROM OR INFORMATION PROVIDED BY THE AUTHORS SHALL CREATE A WARRANTY. UNDER NO CIRCUMSTANCES SHALL THE AUTHORS BE LIABLE FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES RESULTING FROM THE USE, MISUSE, OR INABILITY TO USE THE SOFTWARE, EVEN IF THE AUTHOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THESE EXCLUSIONS AND LIMITATIONS MAY NOT APPLY IN ALL JURISDICTIONS. YOU MAY HAVE ADDITIONAL RIGHTS AND SOME OF THESE LIMITATIONS MAY NOT APPLY TO YOU.\n\nTHIS SOFTWARE IS NOT INTENDED FOR PRIMARY DIAGNOSTIC, ONLY FOR SCIENTIFIC USAGE.\n\nTHE VERSION OF OSIRIX USED MAY NOT BE CERTIFIED AS A MEDICAL DEVICE FOR PRIMARY DIAGNOSIS. IF YOUR VERSION IS NOT CERTIFIED, YOU CAN ONLY USE OSIRIX AS A REVIEWING AND SCIENTIFIC SOFTWARE, NOT FOR PRIMARY DIAGNOSTIC.\n\nAll calculations, measurements and images provided by this software are intended only for scientific research. Any other use is entirely at the discretion and risk of the user. If you do use this software for scientific research please give appropriate credit in publications. This software may not be redistributed, sold or commercially used in any other way without prior approval of the author."] runModal] == NSAlertAlternateReturn)
             return;
     
     if (!controller)
@@ -226,7 +239,7 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
     NSMutableDictionary* monoframePaths = [NSMutableDictionary dictionary];
     
     for (DicomSeries* s in series) {
-        NSArray* paths = [[self class] _uniqueObjectsInArray:[s.images.allObjects valueForKey:@"completePath"]];
+        NSArray* paths = [[self class] _uniqueObjectsInArray:[[DicomUnEnhancer arrayWithSet:s.images] valueForKey:@"completePath"]];
         if (s.images.count > 1 && paths.count == 1) // 1 file, many images -> multiframe
             [multiframePaths setObject:[paths objectAtIndex:0] forKey:s.objectID]; // there's only 1 path in paths
         else [monoframePaths setObject:paths forKey:s.objectID];
@@ -234,23 +247,23 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
     
     // GUI: what does the user want us to do?
     
-    NSOpenPanel* panel = [[[NSOpenPanel alloc] init] autorelease];
+    NSOpenPanel *panel = [[[NSOpenPanel alloc] init] autorelease];
     panel.canChooseFiles = NO;
     panel.canChooseDirectories = YES;
     panel.allowsMultipleSelection = NO;
     panel.canCreateDirectories = YES;
-    panel.prompt = NSLocalizedString(@"Ok", nil);
+    panel.prompt = NSLocalizedString(@"OK", nil);
     
     switch (mode) {
         case DicomUnEnhancerModeNIfTI:
             panel.title = @"NIfTI";
-            panel.message = [NSString stringWithFormat:NSLocalizedString(@"You are exporting %d series. Please choose a location where the generated NIfTI files will be saved.", nil), series.count];
-            panel.accessoryView = [[[[NSViewController alloc] initWithNibName:@"NIfTIAccessoryView" bundle:[NSBundle bundleForClass:[self class]]] autorelease] view];
+            panel.message = [NSString stringWithFormat:NSLocalizedString(@"You are exporting %u series. Please choose a location where the generated NIfTI files will be saved.", nil), (uint32_t)series.count];
+            panel.accessoryView = [[[DicomUnEnhancerNIfTIAccessoryViewController alloc] initWithNibName:@"NIfTIAccessoryView" bundle:[NSBundle bundleForClass:[self class]]] view];
             break;
         case DicomUnEnhancerModeDICOM:
             panel.title = @"DICOM";
-            panel.message = [NSString stringWithFormat:NSLocalizedString(@"You are exporting %d series. Please choose a location where the generated DICOM files will be saved.", nil), series.count];
-            panel.accessoryView = [[[[NSViewController alloc] initWithNibName:@"DICOMAccessoryView" bundle:[NSBundle bundleForClass:[self class]]] autorelease] view];
+            panel.message = [NSString stringWithFormat:NSLocalizedString(@"You are exporting %u series. Please choose a location where the generated DICOM files will be saved.", nil), (uint32_t)series.count];
+            panel.accessoryView = [[[DicomUnEnhancerDICOMAccessoryViewController alloc] initWithNibName:@"DICOMAccessoryView" bundle:[NSBundle bundleForClass:[self class]]] view];
             break;
     }
 
@@ -258,8 +271,10 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
         panel.accessoryViewDisclosed = YES;
 
     [panel beginSheetModalForWindow:[controller window] completionHandler:^(NSInteger result) {
-        NSString* destDirPath = panel.URL.path;
+        NSString *destDirPath = panel.URL.path;
         [panel orderOut:self];
+        
+        [panel.accessoryView autorelease];
         
         if (!result)
             return;
@@ -272,7 +287,7 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
         }
         
         NSThread* thread = [[[NSThread alloc] initWithTarget:self selector:@selector(_processInBackground:) object:[NSArray arrayWithObjects: [NSNumber numberWithInteger:mode], multiframePaths, monoframePaths, destDirPath, c, nil]] autorelease];
-        thread.name = [NSString stringWithFormat:NSLocalizedString(@"UnEnhancing %d %@...", nil), series.count, (series.count == 1 ? NSLocalizedString(@"series", @"singular") : NSLocalizedString(@"series", @"plural"))];
+        thread.name = [NSString stringWithFormat:NSLocalizedString(@"UnEnhancing %u %@...", nil), (uint32_t)series.count, (series.count == 1 ? NSLocalizedString(@"series", @"singular") : NSLocalizedString(@"series", @"plural"))];
         [thread startModalForWindow:[c window]];
         [thread start];
     }];
@@ -290,7 +305,7 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
             BrowserController* browser = [params objectAtIndex:4];
             DicomDatabase* database = [browser database];
             
-            BOOL replaceDicomFiles = (mode == DicomUnEnhancerModeDICOM) && ([NSUserDefaults.standardUserDefaults integerForKey:DicomUnEnhancerDICOMModeTagDefaultsKey] == DicomUnEnhancerDICOMReplaceInDatabaseModeTag);
+            BOOL replaceDicomFiles = (mode == DicomUnEnhancerModeDICOM) && ([NSUserDefaults.standardUserDefaults integerForKey:DicomUnEnhancerDicomModeDefaultsKey] == DicomUnEnhancerDicomModeLibrary);
             
             if (replaceDicomFiles) {
                 destDirPath = [NSFileManager.defaultManager tmpFilePathInDir:[database tempDirPath]];
@@ -300,7 +315,7 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
             // convert multiframes to monoframes
             
             for (NSUInteger i = 0; i < multiframePaths.count; ++i) {
-                thread.status = [NSString stringWithFormat:NSLocalizedString(@"Processing multiframe %d of %d...", nil), i+1, multiframePaths.count];
+                thread.status = [NSString stringWithFormat:NSLocalizedString(@"Processing multiframe %u of %u...", nil), (uint32_t)i+1, (uint32_t)multiframePaths.count];
                 NSManagedObjectID* sid = [multiframePaths.allKeys objectAtIndex:i];
                 NSString* path = [multiframePaths objectForKey:sid];
                 NSString* dir = destDirPath;
@@ -320,7 +335,7 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
                         for (NSManagedObjectID* sid in multiframePaths) {
                             DicomSeries* series = [database objectWithID:sid];
                             // images
-                            [multiframeImages addObjectsFromArray:[[series images] allObjects]];
+                            [multiframeImages addObjectsFromArray:[DicomUnEnhancer arrayWithSet:[series images]]];
                             // albums
                             NSMutableArray* thisSeriesAlbums = [seriesAlbums objectForKey:sid];
                             if (!thisSeriesAlbums) [seriesAlbums setObject:(thisSeriesAlbums = [NSMutableArray array]) forKey:sid];
@@ -351,7 +366,7 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
                         NSArray* monoframes = [monoframePaths objectForKey:sid];
                         if ([monoframes isKindOfClass:[NSArray class]]) { // a list of monoframe files that we must copy to the final location
                             thread.progress = -1;
-                            thread.status = [NSString stringWithFormat:NSLocalizedString(@"Copying monoframe %d of %d...", nil), ++i, c];
+                            thread.status = [NSString stringWithFormat:NSLocalizedString(@"Copying monoframe %u of %u...", nil), (uint32_t)++i, (uint32_t)c];
                             NSString* seriesDir = [NSFileManager.defaultManager tmpFilePathInDir:destDirPath];
                             [NSFileManager.defaultManager confirmDirectoryAtPath:seriesDir];
                             NSUInteger i = 0;
@@ -370,7 +385,7 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
                 NSMutableArray *errors = [NSMutableArray array];
                 
                 for (NSUInteger i = 0; i < monoframePaths.count; ++i) {
-                    thread.status = [NSString stringWithFormat:NSLocalizedString(@"Creating NIfTI %d of %d...", nil), i+1, monoframePaths.count];
+                    thread.status = [NSString stringWithFormat:NSLocalizedString(@"Creating NIfTI %u of %u...", nil), (uint32_t)i+1, (uint32_t)monoframePaths.count];
                     thread.progress = -1;
                     
                     NSManagedObjectID* sid = [monoframePaths.allKeys objectAtIndex:i];
@@ -400,7 +415,7 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
                     // dcm2niix sometimes fails, try up to 10 times
                     for (size_t i = 0; i < 10; ++i) {
                         NSTask *task = [[[NSTask alloc] init] autorelease];
-                        task.launchPath = [[NSBundle bundleForClass:[self class]] pathForAuxiliaryExecutable:@"dcm2niix"];
+                        task.executableURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"dcm2niix" withExtension:nil];
                         task.arguments = args;
                         task.standardError = [NSPipe pipe];
                         [task launch];
