@@ -38,7 +38,9 @@ enum {
     DicomUnEnhancerModeNIfTI
 };
 
-@interface DicomUnEnhancer ()
+@interface DicomUnEnhancer () {
+    NSURL *_dcm2niix_url;
+}
 
 -(void)_initToolbarItems;
 -(void)_processMode:(NSInteger)mode forWindowController:(NSWindowController*)controller;
@@ -48,9 +50,27 @@ enum {
 @implementation DicomUnEnhancer
 
 -(void)initPlugin {
+    NSString *arch;
+#ifdef __x86_64__
+    arch = @"x86_64";
+#else
+    arch = @"arm64";
+#endif
+    
+    if ((_dcm2niix_url = [[[NSBundle bundleForClass:[self class]] URLForResource:[@"dcm2niix-" stringByAppendingString:arch] withExtension:nil] retain]))
+        NSLog(@"DicomUnEnhancer will use %@", _dcm2niix_url.lastPathComponent);
+    else throw [NSException exceptionWithName:NSGenericException reason:@"dcm2niix not found" userInfo:nil];
+    
     [self _initToolbarItems];
     [self _initDefaults];
+    
     [self checkVersion];
+}
+
+- (oneway void)dealloc {
+    [_dcm2niix_url release];
+    
+    [super dealloc];
 }
 
 -(long)filterImage:(NSString*)name {
@@ -415,7 +435,7 @@ NSString* DicomUnEnhancerSaveAsNIfTIToolbarItemIdentifier = @"DicomUnEnhancerSav
                     // dcm2niix sometimes fails, try up to 10 times
                     for (size_t i = 0; i < 10; ++i) {
                         NSTask *task = [[[NSTask alloc] init] autorelease];
-                        task.executableURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"dcm2niix" withExtension:nil];
+                        task.executableURL = _dcm2niix_url;
                         task.arguments = args;
                         task.standardError = [NSPipe pipe];
                         [task launch];

@@ -98,7 +98,6 @@
 				8D5B49B7048680CD000E48DA /* Info.plist */,
 				08FB77AFFE84173DC02AAC07 /* Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
-				599BEEF81429C44B00B45236 /* Binaries */,
 				718A66222702E0890036AC88 /* Scripts */,
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
@@ -120,6 +119,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				716C324D2A8D73D20038533B /* dcm2niix.info.txt */,
 				59A48A9214471CFA00B934DD /* DicomUnEnhancer.png */,
 			);
 			name = Resources;
@@ -150,15 +150,6 @@
 				7140B41A2A9C9628005470AA /* dcm2niix */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		599BEEF81429C44B00B45236 /* Binaries */ = {
-			isa = PBXGroup;
-			children = (
-				716C324D2A8D73D20038533B /* dcm2niix.info.txt */,
-			);
-			name = Binaries;
-			path = DicomUnEnhancer/Binaries;
 			sourceTree = "<group>";
 		};
 		7140B40F2A9C8897005470AA /* Views */ = {
@@ -216,6 +207,7 @@
 			buildPhases = (
 				8D5B49AD048680CD000E48DA /* Headers */,
 				8D5B49AF048680CD000E48DA /* Resources */,
+				713312422A9CCD0200423BE6 /* Copy dcm2niix */,
 				8D5B49B1048680CD000E48DA /* Sources */,
 				8D5B49B3048680CD000E48DA /* Frameworks */,
 			);
@@ -281,6 +273,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		713312422A9CCD0200423BE6 /* Copy dcm2niix */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"",
+			);
+			name = "Copy dcm2niix";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "zsh \"DicomUnEnhancer/Scripts/DicomUnEnhancer/Copy-dcm2niix.sh\"\n";
+		};
 		7140B4212A9C9659005470AA /* CMake */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
