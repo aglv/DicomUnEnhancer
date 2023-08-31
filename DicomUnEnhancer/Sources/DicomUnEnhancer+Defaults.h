@@ -11,7 +11,7 @@
 extern NSString * const DicomUnEnhancerDicomModeDefaultsKey;
 extern NSString * const DicomUnEnhancerNIfTIOutputNamingDefaultsKey;
 extern NSString * const DicomUnEnhancerNIfTIReorientToNearestOrthogonalDefaultsKey;
-extern NSString * const DicomUnEnhancerNIfTIAnonymizeDefaultsKey;
+//extern NSString * const DicomUnEnhancerNIfTIAnonymizeDefaultsKey;
 extern NSString * const DicomUnEnhancerNIfTIGzipOutputDefaultsKey;
 
 typedef NS_ENUM(NSInteger, DicomUnEnhancerDicomMode) {
@@ -26,6 +26,6 @@ typedef NS_ENUM(NSInteger, DicomUnEnhancerDicomMode) {
 
 @interface DicomUnEnhancer (Defaults)
 
--(void)_initDefaults;
+- (void)_initDefaults;
 
 @end

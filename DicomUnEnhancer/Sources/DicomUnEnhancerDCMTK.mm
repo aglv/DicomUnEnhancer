@@ -1,5 +1,5 @@
 //
-//  DicomUnEnhancerDCMTK.mm
+//  DicomUnEnhancer+DCMTK.mm
 //  DicomUnEnhancer
 //
 //  Created by Alessandro Volz on 11.10.11.
@@ -18,29 +18,32 @@
 #import <dcmtk/dcmdata/dcfilefo.h>
 #import <dcmtk/dcmdata/dcuid.h>
 
-/*void describe(DcmSequenceOfItems* items) {
+/*void describe(DcmSequenceOfItems *items) {
     for (unsigned int i = 0; i < items->card(); ++i) {
-        DcmItem* item = items->getItem(i);
+        DcmItem *item = items->getItem(i);
         NSLog(@"%04x,%04x", item->getGTag(), item->getETag());
         for (unsigned int i = 0; i < item->card(); ++i) {
-            DcmElement* element = item->getElement(i);
+            DcmElement *element = item->getElement(i);
             NSLog(@"\telement %04x,%04x", element->getGTag(), element->getETag());
         }
     }
 }*/
 
-static void _copyItem(DcmItem* origin, DcmItem* destination) {
+static void _copyItem(DcmItem *origin, DcmItem *destination) {
     for (unsigned int i = 0; i < origin->card(); ++i)
         destination->insert((DcmElement*)origin->getElement(i)->clone(), OFTrue);
 }
 
-static void _copySequenceOfItems(DcmSequenceOfItems* origin, DcmItem* destination) {
+static void _copySequenceOfItems(DcmSequenceOfItems *origin, DcmItem *destination) {
     for (unsigned int i = 0; i < origin->card(); ++i) // there usually is only one
         _copyItem(origin->getItem(i), destination);
 }
 
-static BOOL _copyItem(DcmItem* from, const DcmTagKey& key, DcmItem* destination) {
-    DcmElement* element = nil;
+static BOOL _copyItem(DcmItem *from, const DcmTagKey& key, DcmItem *destination) {
+    if (!from)
+        return NO;
+    
+    DcmElement *element = nil;
     if (from->findAndGetElement(key, element).bad())
         return NO;
     
@@ -53,8 +56,8 @@ static BOOL _copyItem(DcmItem* from, const DcmTagKey& key, DcmItem* destination)
 
 @implementation DicomUnEnhancerDCMTK
 
-+(NSString*)processFileAtPath:(NSString*)path intoDirInPath:(NSString*)outputDirPath {
-    NSThread* thread = [NSThread currentThread];
++ (NSString *)processFileAtPath:(NSString *)path intoDirInPath:(NSString *)outputDirPath {
+    NSThread *thread = [NSThread currentThread];
     
     @try {
         [thread enterOperationWithRange:0:1];
@@ -74,11 +77,16 @@ static BOOL _copyItem(DcmItem* from, const DcmTagKey& key, DcmItem* destination)
             [NSException raise:NSGenericException format:@"Error: unable to load file at %@", path];
         
         // describe(&fileformat);
-        DcmItem* originalElements = fileformat.getItem(1); // element 0 contains (0002,****) and element 1 contains all the rest.. it seems
-        DcmSequenceOfItems* originalSharedFunctionalGroupsSequence = nil;
+        DcmItem *originalElements = fileformat.getItem(1); // element 0 contains (0002,****) and element 1 contains all the rest.. it seems
+        
+        DcmSequenceOfItems *originalSharedFunctionalGroupsSequence = NULL;
         originalElements->findAndGetElement(DcmTagKey(0x5200,0x9229), (DcmElement*&)originalSharedFunctionalGroupsSequence);
-        DcmItem* originalSharedFunctionalGroup = originalSharedFunctionalGroupsSequence->getItem(0);
-        DcmSequenceOfItems* originalPerFrameFunctionalGroupsSequence = nil;
+        
+        DcmItem *originalSharedFunctionalGroup = NULL;
+        if (originalSharedFunctionalGroupsSequence)
+            originalSharedFunctionalGroup = originalSharedFunctionalGroupsSequence->getItem(0);
+        
+        DcmSequenceOfItems *originalPerFrameFunctionalGroupsSequence = NULL;
         originalElements->findAndGetElement(DcmTagKey(0x5200,0x9230), (DcmElement*&)originalPerFrameFunctionalGroupsSequence);
         
         DicomImage image(&fileformat, EXS_Unknown);
@@ -90,11 +98,11 @@ static BOOL _copyItem(DcmItem* from, const DcmTagKey& key, DcmItem* destination)
             thread.progress = 1.0*frameIndex/image.getFrameCount();
             
             DcmFileFormat outfileformat;
-            DcmDataset* outdataset = outfileformat.getDataset();
+            DcmDataset *outdataset = outfileformat.getDataset();
             
-            DcmElement* tmpElement;
-            DcmSequenceOfItems* tmpSequenceOfItems;
-            DcmItem* tmpItem;
+            DcmElement *tmpElement;
+            DcmSequenceOfItems *tmpSequenceOfItems;
+            DcmItem *tmpItem;
             
 //          NSLog(@"Frame %d", frameIndex);
             
@@ -197,10 +205,10 @@ static BOOL _copyItem(DcmItem* from, const DcmTagKey& key, DcmItem* destination)
             
             // handle PerFrameFunctionalGroupsSequence for this frame
             if (originalPerFrameFunctionalGroupsSequence) {
-                DcmItem* originalFunctionalGroup = originalPerFrameFunctionalGroupsSequence->getItem(frameIndex);
+                DcmItem *originalFunctionalGroup = originalPerFrameFunctionalGroupsSequence->getItem(frameIndex);
                 
                 // copy the item at the current frame's index
-                //DcmSequenceOfItems* newPerFrameFunctionalGroupsSequence = new DcmSequenceOfItems(DcmTag(0x5200,0x9230));
+                //DcmSequenceOfItems *newPerFrameFunctionalGroupsSequence = new DcmSequenceOfItems(DcmTag(0x5200,0x9230));
                 //newPerFrameFunctionalGroupsSequence->append((DcmItem*)originalFunctionalGroup->clone());
                 //output.insert(newPerFrameFunctionalGroupsSequence);
                 
@@ -237,12 +245,14 @@ static BOOL _copyItem(DcmItem* from, const DcmTagKey& key, DcmItem* destination)
             }
             
             // save
-            NSString* outputFilePath = [outputDirPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.dcm", (int)++outCounter]];
+            NSString *outputFilePath = [outputDirPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.dcm", (int)++outCounter]];
             outfileformat.saveFile(outputFilePath.fileSystemRepresentation, EXS_LittleEndianExplicit, EET_ExplicitLength);
         }
-    } @catch (...) {
+    }
+    @catch (...) {
         @throw;
-    } @finally {
+    }
+    @finally {
         [thread exitOperation];
     }
     

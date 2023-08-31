@@ -10,6 +10,6 @@
 
 @interface DicomUnEnhancerDCMTK : NSObject
 
-+(NSString*)processFileAtPath:(NSString*)path intoDirInPath:(NSString*)destDirPath;
++ (NSString *)processFileAtPath:(NSString *)path intoDirInPath:(NSString *)destDirPath;
 
 @end

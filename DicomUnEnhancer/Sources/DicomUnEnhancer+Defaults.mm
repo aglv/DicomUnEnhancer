@@ -16,7 +16,7 @@
 NSString * const DicomUnEnhancerDicomModeDefaultsKey = @"DicomUnEnhancerDICOMModeTag";
 NSString * const DicomUnEnhancerNIfTIOutputNamingDefaultsKey = @"DicomUnEnhancerNIfTIOutputNaming";
 NSString * const DicomUnEnhancerNIfTIReorientToNearestOrthogonalDefaultsKey = @"DicomUnEnhancerNIfTIReorientToNearestOrthogonal";
-NSString * const DicomUnEnhancerNIfTIAnonymizeDefaultsKey = @"DicomUnEnhancerNIfTIAnonymize";
+//NSString * const DicomUnEnhancerNIfTIAnonymizeDefaultsKey = @"DicomUnEnhancerNIfTIAnonymize";
 NSString * const DicomUnEnhancerNIfTIGzipOutputDefaultsKey = @"DicomUnEnhancerNIfTIGzipOutput";
 
 @interface _DicomUnEnhancerDefaultsHelper : NSObject
@@ -25,7 +25,7 @@ NSString * const DicomUnEnhancerNIfTIGzipOutputDefaultsKey = @"DicomUnEnhancerNI
 
 @implementation DicomUnEnhancer (Defaults)
 
--(void)_initDefaults {
+- (void)_initDefaults {
     [[_DicomUnEnhancerDefaultsHelper alloc] init];
 }
 
@@ -33,12 +33,12 @@ NSString * const DicomUnEnhancerNIfTIGzipOutputDefaultsKey = @"DicomUnEnhancerNI
 
 @implementation _DicomUnEnhancerDefaultsHelper
 
--(id)init {
+- (id)init {
     if (([super init])) {
-        NSUserDefaults* defaults = NSUserDefaults.standardUserDefaults;
+        NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
         [defaults registerDefaults:@{ DicomUnEnhancerNIfTIOutputNamingDefaultsKey: @"%p_%t_%s",
                                       DicomUnEnhancerDicomModeDefaultsKey: @(DicomUnEnhancerDicomModeLibrary),
-                                      DicomUnEnhancerNIfTIAnonymizeDefaultsKey: @NO,
+//                                      DicomUnEnhancerNIfTIAnonymizeDefaultsKey: @NO,
                                       DicomUnEnhancerNIfTIGzipOutputDefaultsKey: @NO }];
 //        [defaults addObserver:self forValuesKey:DicomUnEnhancerNIfTIOutputNamingDateDefaultsKey options:NSKeyValueObservingOptionInitial context:nil];
 //        [defaults addObserver:self forValuesKey:DicomUnEnhancerNIfTIOutputNamingEventsDefaultsKey options:NSKeyValueObservingOptionInitial context:nil];
@@ -49,8 +49,8 @@ NSString * const DicomUnEnhancerNIfTIGzipOutputDefaultsKey = @"DicomUnEnhancerNI
     return self;
 }
 
-//-(void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context {
-//    NSUserDefaults* defaults = NSUserDefaults.standardUserDefaults;
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+//    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
 //    BOOL anySpecialIsOn = [defaults boolForKey:DicomUnEnhancerNIfTIOutputNamingEventsDefaultsKey]
 //                       || [defaults boolForKey:DicomUnEnhancerNIfTIOutputNamingIDDefaultsKey]
 //                       || [defaults boolForKey:DicomUnEnhancerNIfTIOutputNamingProtocolDefaultsKey];

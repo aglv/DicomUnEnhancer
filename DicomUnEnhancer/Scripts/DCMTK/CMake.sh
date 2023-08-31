@@ -143,11 +143,11 @@ ds+=( CMAKE_OSX_DEPLOYMENT_TARGET:STRING="$MACOSX_DEPLOYMENT_TARGET" ) # Minimum
 #ds+=( CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE ) # If this value is on, makefiles will be generated without the .SILENT directive, and all commands will be echoed to the console during the make.  This is useful for debugging only. With Visual Studio IDE projects all commands are done without /nologo.
 #ds+=( DCMTK_DEFAULT_DICT:STRING=external ) # Denotes whether DCMTK will use built-in (compiled-in), external (file), or no default dictionary on startup
 #ds+=( DCMTK_ENABLE_CHARSET_CONVERSION:STRING=libiconv ) # Select character set conversion implementation.
-#ds+=( DCMTK_ENABLE_CXX11:STRING=INFERRED ) # Enable use of native C++11 features (eg. move semantics).
+ds+=( DCMTK_ENABLE_CXX11:STRING=ON ) # Enable use of native C++11 features (eg. move semantics).
 #ds+=( DCMTK_ENABLE_LFS:STRING=lfs ) # whether to use lfs/lfs64 or not
 #ds+=( DCMTK_ENABLE_MANPAGES:BOOL=ON ) # Enable building/installing of manpages.
-#ds+=( DCMTK_ENABLE_PRIVATE_TAGS:BOOL=OFF ) # Configure DCMTK with support for DICOM private tags coming with DCMTK.
-#ds+=( DCMTK_ENABLE_STL:BOOL=OFF ) # Enable use of native STL classes and algorithms instead of DCMTK's own implementations.
+ds+=( DCMTK_ENABLE_PRIVATE_TAGS:BOOL=ON ) # Configure DCMTK with support for DICOM private tags coming with DCMTK.
+ds+=( DCMTK_ENABLE_STL:BOOL=ON ) # Enable use of native STL classes and algorithms instead of DCMTK's own implementations.
 #ds+=( DCMTK_ENABLE_STL_ALGORITHM:STRING=INFERRED ) # Enable use of STL algorithm.
 #ds+=( DCMTK_ENABLE_STL_LIMITS:STRING=INFERRED ) # Enable use of STL limit.
 #ds+=( DCMTK_ENABLE_STL_LIST:STRING=INFERRED ) # Enable use of STL list.
@@ -162,7 +162,7 @@ ds+=( CMAKE_OSX_DEPLOYMENT_TARGET:STRING="$MACOSX_DEPLOYMENT_TARGET" ) # Minimum
 #ds+=( DCMTK_FORCE_FPIC_ON_UNIX:BOOL=OFF ) # Add -fPIC compiler flag on unix 64 bit machines to allow linking from dynamic libraries even if DCMTK is built statically
 #ds+=( DCMTK_GENERATE_DOXYGEN_TAGFILE:BOOL=OFF ) # Generate a tag file with DOXYGEN.
 #ds+=( DCMTK_LINK_STATIC:BOOL=OFF ) # Statically link all libraries and tools with the runtime and third party libraries.
-#ds+=( DCMTK_MODULES:STRING=config;ofstd;oflog;dcmdata;dcmimgle;dcmimage;dcmjpeg;dcmjpls;dcmtls;dcmnet;dcmsr;dcmsign;dcmwlm;dcmqrdb;dcmpstat;dcmrt;dcmiod;dcmfg;dcmseg;dcmtract;dcmpmap;dcmect ) # List of modules that should be built.
+ds+=( DCMTK_MODULES:STRING="ofstd;oflog;dcmdata;dcmimgle" ) # List of modules that should be built. # removed: config;dcmimage;dcmjpeg;dcmjpls;dcmtls;dcmnet;dcmsr;dcmsign;dcmwlm;dcmqrdb;dcmpstat;dcmrt;dcmiod;dcmfg;dcmseg;dcmtract;dcmpmap;dcmect
 #ds+=( DCMTK_PORTABLE_LINUX_BINARIES:BOOL=OFF ) # Create ELF binaries while statically linking all third party libraries and libstdc++.
 ds+=( DCMTK_PRESERVE_IMAGETYPE:BOOL=ON ) # default is OFF # Don't set ImageType to DERIVED when re-encoding.
 #ds+=( DCMTK_TLS_LIBRARY_POSTFIX:STRING= ) # Postfix for libraries that change their ABI when using OpenSSL.

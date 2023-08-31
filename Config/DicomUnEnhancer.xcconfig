@@ -1,0 +1,14 @@
+//
+//  DicomUnEnhancer.xcconfig
+//  DicomUnEnhancer
+//
+//  Created by Alessandro Volz on 8/31/23.
+//
+
+weak_viewer = -Wl,-U,_OBJC_CLASS_$_PluginFilter -Wl,-U,_OBJC_METACLASS_$_PluginFilter -Wl,-U,_OBJC_IVAR_$_PluginFilter.viewerController -Wl,-U,_OBJC_CLASS_$_BrowserController -Wl,-U,_OBJC_CLASS_$_DicomImage -Wl,-U,_OBJC_CLASS_$_DicomSeries -Wl,-U,_OBJC_CLASS_$_DicomStudy -Wl,-U,_OBJC_CLASS_$_ViewerController -Wl,-U,_OBJC_CLASS_$_N2WebServiceClient
+weak_other = -Wl,-U,_deflate -Wl,-U,_deflateEnd -Wl,-U,_deflateInit2_ -Wl,-U,_gl_round_box -Wl,-U,_iconv -Wl,-U,_iconv_close -Wl,-U,_iconv_open -Wl,-U,_iconvctl -Wl,-U,_inflate -Wl,-U,_inflateEnd -Wl,-U,_inflateInit2_ -Wl,-U,_inflateInit_ -Wl,-U,_locale_charset -Wl,-U,_vDSP_maxvD -Wl,-U,_vDSP_meanvD -Wl,-U,_vDSP_minvD -Wl,-U,__libiconv_version
+OTHER_LDFLAGS = $(inherited) $(weak_viewer) $(weak_other) -ldcmdata -ldcmimgle -lofstd -loflog
+
+LIBRARY_SEARCH_PATHS = $(inherited) "$CONFIGURATION_TEMP_DIR/DCMTK.build/Install/lib"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PROJECT_DIR/DicomUnEnhancer/ThirdParty/OsiriX-API"
+HEADER_SEARCH_PATHS = $(inherited) "$CONFIGURATION_TEMP_DIR/DCMTK.build/Install/include"

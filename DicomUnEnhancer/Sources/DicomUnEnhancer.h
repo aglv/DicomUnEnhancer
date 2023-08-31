@@ -12,10 +12,8 @@
 #import <OsiriXAPI/PluginFilter.h>
 #pragma clang diagnostic pop
 
-@interface DicomUnEnhancer : PluginFilter {
+@interface DicomUnEnhancer : PluginFilter
 
-}
-
-- (long) filterImage:(NSString*) menuName;
+- (long)filterImage:(NSString *)menuName;
 
 @end

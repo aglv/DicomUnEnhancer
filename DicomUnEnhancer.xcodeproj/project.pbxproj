@@ -65,6 +65,7 @@
 		5939C3AA144713E300A6D158 /* DicomUnEnhancerDCMTK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DicomUnEnhancerDCMTK.h; sourceTree = "<group>"; };
 		5939C3AB144713E300A6D158 /* DicomUnEnhancerDCMTK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DicomUnEnhancerDCMTK.mm; sourceTree = "<group>"; };
 		59A48A9214471CFA00B934DD /* DicomUnEnhancer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DicomUnEnhancer.png; sourceTree = "<group>"; };
+		713312582AA0B12200423BE6 /* DicomUnEnhancer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DicomUnEnhancer.xcconfig; sourceTree = "<group>"; };
 		7140B4052A9C87F2005470AA /* DicomUnEnhancerDICOMAccessoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DicomUnEnhancerDICOMAccessoryViewController.h; sourceTree = "<group>"; };
 		7140B4062A9C87F2005470AA /* DicomUnEnhancerDICOMAccessoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DicomUnEnhancerDICOMAccessoryViewController.m; sourceTree = "<group>"; };
 		7140B40A2A9C882C005470AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NIfTIAccessoryView.xib; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 				08FB77AFFE84173DC02AAC07 /* Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
 				718A66222702E0890036AC88 /* Scripts */,
+				713312572AA0B10600423BE6 /* Config */,
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
 			);
@@ -150,6 +152,14 @@
 				7140B41A2A9C9628005470AA /* dcm2niix */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		713312572AA0B10600423BE6 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				713312582AA0B12200423BE6 /* DicomUnEnhancer.xcconfig */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		7140B40F2A9C8897005470AA /* Views */ = {
@@ -474,6 +484,7 @@
 		};
 		CE6A9A9108AC841300D0C1EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 713312582AA0B12200423BE6 /* DicomUnEnhancer.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -481,19 +492,10 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUGGING_SYMBOLS = YES;
 				DEVELOPMENT_TEAM = R8G9BDMT59;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/DicomUnEnhancer/ThirdParty/OsiriX-API",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_TRIGRAPHS = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = DicomUnEnhancer/DicomUnEnhancer_Prefix.pch;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = $CONFIGURATION_TEMP_DIR/DCMTK.build/Install/include;
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = DicomUnEnhancer/Info.plist;
 				INSTALL_PATH = /Plugins;
 				LIBRARY_STYLE = Bundle;
@@ -501,10 +503,6 @@
 					"-Wno-quoted-include-in-framework-header",
 					"-Wno-nonportable-include-path",
 					"-Wno-shorten-64-to-32",
-				);
-				OTHER_LDFLAGS = (
-					"-undefined",
-					dynamic_lookup,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.volz.dicomunenhancer;
 				PRODUCT_NAME = DicomUnEnhancer;
@@ -516,22 +514,15 @@
 		};
 		CE6A9A9208AC841300D0C1EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 713312582AA0B12200423BE6 /* DicomUnEnhancer.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = R8G9BDMT59;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/DicomUnEnhancer/ThirdParty/OsiriX-API",
-				);
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = DicomUnEnhancer/DicomUnEnhancer_Prefix.pch;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = $CONFIGURATION_TEMP_DIR/DCMTK.build/Install/include;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = DicomUnEnhancer/Info.plist;
 				INSTALL_PATH = /Plugins;
 				LIBRARY_STYLE = Bundle;
@@ -539,10 +530,6 @@
 					"-Wno-quoted-include-in-framework-header",
 					"-Wno-nonportable-include-path",
 					"-Wno-shorten-64-to-32",
-				);
-				OTHER_LDFLAGS = (
-					"-undefined",
-					dynamic_lookup,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.volz.dicomunenhancer;
 				PRODUCT_NAME = DicomUnEnhancer;
